@@ -1,3 +1,5 @@
+"use client";
+
 import { PropertyType, RoleType } from "@/types/property.type";
 import React from "react";
 import ProofOfOwnership from "./proof-of-ownership";
