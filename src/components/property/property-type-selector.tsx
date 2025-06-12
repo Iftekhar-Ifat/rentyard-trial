@@ -9,9 +9,10 @@ import {
   Home03Icon,
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon, IconSvgElement } from "@hugeicons/react";
+import { PropertyType } from "../../../types/property.type";
 
 type PropertyTypeOption = {
-  id: string;
+  id: PropertyType;
   title: string;
   description: string;
   icon: IconSvgElement;
@@ -40,8 +41,8 @@ const propertyTypes: PropertyTypeOption[] = [
 ];
 
 type PropertyTypeSelectorProps = {
-  value?: string;
-  onValueChange?: (value: string) => void;
+  value: PropertyType | null;
+  onValueChange?: (value: PropertyType) => void;
 };
 
 export function PropertyTypeSelector({
