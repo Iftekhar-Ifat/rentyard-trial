@@ -4,6 +4,7 @@ import { useState } from "react";
 import PropertySelectionForm from "./property-selector/property-selection-form";
 import RoleSelectionForm from "./role-selector/role-selection-form";
 import { PropertyType, RoleType } from "@/types/property.type";
+import RoleBasedFormWrapper from "./role-based-form/role-based-form-wrapper";
 
 export default function AddProperty() {
   const [propertyType, setPropertyType] = useState<PropertyType | null>(null);
@@ -14,7 +15,10 @@ export default function AddProperty() {
         value={propertyType}
         onValueChange={setPropertyType}
       />
-      <RoleSelectionForm value={roleType} onValueChange={setRoleType} />
+      {propertyType === "condominiums" && (
+        <RoleSelectionForm value={roleType} onValueChange={setRoleType} />
+      )}
+      <RoleBasedFormWrapper propertyType={propertyType} roleType={roleType} />
     </div>
   );
 }
