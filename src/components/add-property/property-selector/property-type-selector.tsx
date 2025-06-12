@@ -4,50 +4,51 @@ import type React from "react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import {
-  Key02Icon,
-  ManagerIcon,
-  PermanentJobIcon,
+  Building03Icon,
+  Building06Icon,
+  Home03Icon,
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon, IconSvgElement } from "@hugeicons/react";
-import { RoleType } from "../../../types/property.type";
+import { PropertyType } from "@/types/property.type";
 
-type RoleOption = {
-  id: RoleType;
+type PropertyTypeOption = {
+  id: PropertyType;
   title: string;
   description: string;
   icon: IconSvgElement;
 };
 
-const roles: RoleOption[] = [
+// might come from db/api
+const propertyTypes: PropertyTypeOption[] = [
   {
-    id: "landlord",
-    title: "Landlord",
-    description: "Owner of the property",
-    icon: Key02Icon,
+    id: "single-house",
+    title: "Single House Property",
+    description: "Single unit house for single family",
+    icon: Home03Icon,
   },
   {
-    id: "realtor",
-    title: "Realtor",
-    description: "Manage property on behalf on owner",
-    icon: ManagerIcon,
+    id: "apartments",
+    title: "Apartments complex",
+    description: "Multiple unit house for families",
+    icon: Building03Icon,
   },
   {
-    id: "property-management",
-    title: "Property management company",
-    description: "For management company",
-    icon: PermanentJobIcon,
+    id: "condominiums",
+    title: "Condominiums",
+    description: "Multiple unit house for families",
+    icon: Building06Icon,
   },
 ];
 
-type RoleTypeSelectorProps = {
-  value: RoleType | null;
-  onValueChange: (value: RoleType) => void;
+type PropertyTypeSelectorProps = {
+  value: PropertyType | null;
+  onValueChange: (value: PropertyType) => void;
 };
 
-export function RoleTypeSelector({
+export function PropertyTypeSelector({
   value,
   onValueChange,
-}: RoleTypeSelectorProps) {
+}: PropertyTypeSelectorProps) {
   return (
     <div className="my-4">
       <RadioGroup
@@ -55,7 +56,7 @@ export function RoleTypeSelector({
         onValueChange={onValueChange}
         className="grid grid-cols-1 md:grid-cols-3 gap-4"
       >
-        {roles.map((type) => {
+        {propertyTypes.map((type) => {
           return (
             <div key={type.id} className="relative">
               <RadioGroupItem

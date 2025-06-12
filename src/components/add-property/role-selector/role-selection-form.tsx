@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { RoleType } from "../../../types/property.type";
 import { RoleTypeSelector } from "./role-type-selector";
+import { RoleType } from "@/types/property.type";
 
 export default function RoleSelectionForm() {
   const [roleType, setRoleType] = useState<RoleType | null>(null);

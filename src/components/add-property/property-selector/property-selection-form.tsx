@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { PropertyTypeSelector } from "./property-type-selector";
-import { PropertyType } from "../../../types/property.type";
+import { PropertyType } from "@/types/property.type";
 
 export default function PropertySelectionForm() {
   const [propertyType, setPropertyType] = useState<PropertyType | null>(null);

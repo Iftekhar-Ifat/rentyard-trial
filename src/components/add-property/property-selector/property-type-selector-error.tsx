@@ -1,7 +1,7 @@
+import { Button } from "@/components/ui/button";
 import React from "react";
-import { Button } from "../ui/button";
 
-export default function RoleTypeSelectorError() {
+export default function PropertyTypeSelectorError() {
   return (
     <div>
       <div>Error...</div>
