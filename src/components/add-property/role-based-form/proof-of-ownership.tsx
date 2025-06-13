@@ -1,4 +1,4 @@
-"use client";
+/* "use client";
 
 import type React from "react";
 import { useState } from "react";
@@ -20,7 +20,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { proofOfOwnershipSchema } from "@/validation/role-based-form.schema";
+import { proofOfOwnershipSchema } from "@/validation/add-property-form.schema";
 
 type ProofOfOwnershipFormData = z.infer<typeof proofOfOwnershipSchema>;
 
@@ -124,3 +124,4 @@ export default function ProofOfOwnership() {
     </Form>
   );
 }
+ */

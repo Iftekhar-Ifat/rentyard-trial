@@ -1,6 +1,6 @@
 "use client";
 
-import { RoleType } from "@/types/property.type";
+import { Control } from "react-hook-form";
 import { HugeiconsIcon, IconSvgElement } from "@hugeicons/react";
 import {
   Key02Icon,
@@ -9,9 +9,17 @@ import {
 } from "@hugeicons/core-free-icons";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
+import { z } from "zod";
+import { getDynamicSchema } from "@/validation/add-property-form.schema";
 
 type RoleOption = {
-  id: RoleType;
+  id: z.infer<ReturnType<typeof getDynamicSchema>>["roleType"];
   title: string;
   description: string;
   icon: IconSvgElement;
@@ -27,7 +35,7 @@ const roles: RoleOption[] = [
   {
     id: "realtor",
     title: "Realtor",
-    description: "Manage property on behalf on owner",
+    description: "Manage property on behalf of owner",
     icon: ManagerIcon,
   },
   {
@@ -39,54 +47,60 @@ const roles: RoleOption[] = [
 ];
 
 type RoleSelectionFormProps = {
-  value: RoleType | null;
-  onValueChange: (value: RoleType) => void;
+  control: Control<z.infer<ReturnType<typeof getDynamicSchema>>>;
 };
 
-export default function RoleSelectionForm({
-  value,
-  onValueChange,
-}: RoleSelectionFormProps) {
+export default function RoleSelectionForm({ control }: RoleSelectionFormProps) {
   return (
     <div className="my-10">
       <h2 className="text-3xl font-semibold">Select your role</h2>
-      <div className="my-4">
-        <RadioGroup
-          value={value}
-          onValueChange={onValueChange}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4"
-        >
-          {roles.map((type) => {
-            return (
-              <div key={type.id} className="relative">
-                <RadioGroupItem
-                  value={type.id}
-                  id={type.id}
-                  className="sr-only"
-                />
-                <Label
-                  htmlFor={type.id}
-                  className={`flex items-start gap-3 p-6 border rounded-lg cursor-pointer transition-colors hover:bg-gray-50 ${
-                    value === type.id
-                      ? "border-primary bg-blue-50"
-                      : "border-gray-200"
-                  }`}
-                >
-                  <div className="h-14 w-14 rounded-lg p-2 transition-colors place-items-center content-center bg-accent">
-                    <HugeiconsIcon icon={type.icon} />
+
+      <FormField
+        control={control}
+        name="roleType"
+        render={({ field, fieldState }) => (
+          <FormItem className="my-4">
+            <FormControl>
+              <RadioGroup
+                value={field.value}
+                onValueChange={field.onChange}
+                className="grid grid-cols-1 md:grid-cols-3 gap-4"
+              >
+                {roles.map((role) => (
+                  <div key={role.id} className="relative">
+                    <RadioGroupItem
+                      value={role.id}
+                      id={role.id}
+                      className="sr-only"
+                    />
+                    <Label
+                      htmlFor={role.id}
+                      className={`flex items-start gap-3 p-6 border rounded-lg cursor-pointer transition-colors ${
+                        field.value === role.id
+                          ? "border-primary bg-blue-50"
+                          : fieldState.error
+                          ? "border-red-500"
+                          : "border-gray-200 hover:bg-gray-50"
+                      }`}
+                    >
+                      <div className="h-14 w-14 rounded-lg p-2 transition-colors place-items-center content-center bg-accent">
+                        <HugeiconsIcon icon={role.icon} />
+                      </div>
+                      <div className="space-y-1">
+                        <div className="text-lg font-medium">{role.title}</div>
+                        <div className="text-sm text-muted-foreground">
+                          {role.description}
+                        </div>
+                      </div>
+                    </Label>
                   </div>
-                  <div className="space-y-1">
-                    <div className="text-lg font-medium">{type.title}</div>
-                    <div className="text-sm text-muted-foreground">
-                      {type.description}
-                    </div>
-                  </div>
-                </Label>
-              </div>
-            );
-          })}
-        </RadioGroup>
-      </div>
+                ))}
+              </RadioGroup>
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
     </div>
   );
 }

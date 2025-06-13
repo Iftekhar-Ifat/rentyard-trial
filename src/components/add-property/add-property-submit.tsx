@@ -11,7 +11,7 @@ export default function AddPropertySubmit() {
           <Link href="/" className="underline">
             Back
           </Link>
-          <Button>Get Started</Button>
+          <Button type="submit">Get Started</Button>
         </div>
       </MaxWidthWrapper>
     </div>
