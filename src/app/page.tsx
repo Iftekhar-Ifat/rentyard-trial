@@ -3,7 +3,7 @@ import MaxWidthWrapper from "@/components/shared/max-width-wrapper";
 
 export default function Home() {
   return (
-    <MaxWidthWrapper>
+    <MaxWidthWrapper className="flex flex-col flex-grow">
       <AddProperty />
     </MaxWidthWrapper>
   );

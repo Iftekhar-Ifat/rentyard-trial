@@ -11,7 +11,7 @@ export default function AddProperty() {
   const [propertyType, setPropertyType] = useState<PropertyType | null>(null);
   const [roleType, setRoleType] = useState<RoleType | null>(null);
   return (
-    <div className="flex flex-col justify-between h-[calc(100vh-4.1rem)]">
+    <div className="flex flex-col flex-grow">
       <div>
         <PropertySelectionForm
           value={propertyType}
@@ -20,9 +20,9 @@ export default function AddProperty() {
         {propertyType === "condominiums" && (
           <RoleSelectionForm value={roleType} onValueChange={setRoleType} />
         )}
-        <RoleBasedFormWrapper propertyType={propertyType} roleType={roleType} />
       </div>
-      <AddPropertySubmit />
+      <RoleBasedFormWrapper propertyType={propertyType} roleType={roleType} />
+      {propertyType && roleType ? null : <AddPropertySubmit />}
     </div>
   );
 }
