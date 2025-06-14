@@ -7,7 +7,7 @@ import { Button } from "../ui/button";
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b">
+    <header className="sticky bg-white top-0 z-50 w-full border-b">
       <MaxWidthWrapper>
         <div className="container flex h-16 items-center justify-between">
           <Link

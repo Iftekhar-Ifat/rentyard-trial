@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Upload02Icon } from "@hugeicons/core-free-icons";
@@ -57,7 +56,7 @@ export default function ProofOfOwnership() {
       >
         <div className="flex-1 overflow-auto space-y-4 pt-6">
           <Card className="w-full  py-0 gap-0.5">
-            <CardHeader className="h-10 bg-muted/50 border-b px-4 py-4">
+            <CardHeader className="h-12 bg-muted/50 border-b px-4 py-4">
               <CardTitle className="text-muted-foreground font-medium">
                 Proof of ownership
               </CardTitle>

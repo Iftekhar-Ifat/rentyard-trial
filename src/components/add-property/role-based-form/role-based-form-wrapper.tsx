@@ -4,7 +4,7 @@ import { PropertyType, RoleType } from "@/types/property.type";
 import React from "react";
 import ProofOfOwnership from "./proof-of-ownership";
 import PropertyManagementForm from "./property-management-form";
-import RetailorManagementForm from "./retailor-management-form";
+import RealtorManagementForm from "./realtor-management-form";
 
 type RoleBasedFormProps = {
   propertyType: PropertyType | null;
@@ -20,7 +20,7 @@ export default function RoleBasedFormWrapper({
   }
 
   if (propertyType === "condominiums" && roleType === "realtor") {
-    return <RetailorManagementForm />;
+    return <RealtorManagementForm />;
   }
 
   if (propertyType === "condominiums" && roleType === "property-management") {
