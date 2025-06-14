@@ -3,6 +3,8 @@
 import { PropertyType, RoleType } from "@/types/property.type";
 import React from "react";
 import ProofOfOwnership from "./proof-of-ownership";
+import PropertyManagementForm from "./property-management-form";
+import RetailorManagementForm from "./retailor-management-form";
 
 type RoleBasedFormProps = {
   propertyType: PropertyType | null;
@@ -17,14 +19,12 @@ export default function RoleBasedFormWrapper({
     return <ProofOfOwnership />;
   }
 
-  if (propertyType === "condominiums" && roleType === "property-management") {
-    return <div>Property management form</div>;
+  if (propertyType === "condominiums" && roleType === "realtor") {
+    return <RetailorManagementForm />;
   }
 
-  if (propertyType === "condominiums" && roleType === "realtor") {
-    return <div>Retailor management form</div>;
+  if (propertyType === "condominiums" && roleType === "property-management") {
+    return <PropertyManagementForm />;
   }
   return null;
 }
-
-// This will wrap the main form component

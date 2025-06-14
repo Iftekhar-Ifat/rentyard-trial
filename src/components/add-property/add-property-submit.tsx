@@ -9,7 +9,7 @@ export default function AddPropertySubmit({
   isVisible: boolean;
 }) {
   return (
-    <div className="w-full flex-grow content-end" hidden={isVisible}>
+    <div className="w-full flex-grow content-end" hidden={!isVisible}>
       <MaxWidthWrapper>
         <div className="container flex h-24 items-center justify-between">
           <Link href="/" className="underline">

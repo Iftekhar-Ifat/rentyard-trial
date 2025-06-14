@@ -10,6 +10,7 @@ import AddPropertySubmit from "./add-property-submit";
 export default function AddProperty() {
   const [propertyType, setPropertyType] = useState<PropertyType | null>(null);
   const [roleType, setRoleType] = useState<RoleType | null>(null);
+
   return (
     <div className="flex flex-col flex-grow">
       <div>
@@ -22,7 +23,9 @@ export default function AddProperty() {
         )}
       </div>
       <RoleBasedFormWrapper propertyType={propertyType} roleType={roleType} />
-      <AddPropertySubmit isVisible={!!roleType} />
+      <AddPropertySubmit
+        isVisible={propertyType !== "condominiums" || roleType === null}
+      />
     </div>
   );
 }
