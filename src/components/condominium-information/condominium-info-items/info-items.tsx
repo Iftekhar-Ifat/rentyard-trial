@@ -9,7 +9,7 @@ export type ItemsProps = {
   onAdd: (key: CondoInfoFieldKey, data: unknown) => void;
 };
 
-const ITEMDATA: {
+const ITEM_DATA: {
   left: Array<{
     key: CondoInfoFieldKey;
     label: string;
@@ -112,7 +112,7 @@ export default function InfoItems({ fields, onAdd }: ItemsProps) {
     <div className="my-6 grid grid-cols-1 md:grid-cols-2 gap-4">
       {/* LEFT */}
       <div className="space-y-2">
-        {ITEMDATA.left.map((m) => (
+        {ITEM_DATA.left.map((m) => (
           <ItemCard
             key={m.key}
             fieldKey={m.key}
@@ -127,7 +127,7 @@ export default function InfoItems({ fields, onAdd }: ItemsProps) {
 
       {/* RIGHT */}
       <div className="space-y-2">
-        {ITEMDATA.right.map((m) => (
+        {ITEM_DATA.right.map((m) => (
           <ItemCard
             key={m.key}
             fieldKey={m.key}

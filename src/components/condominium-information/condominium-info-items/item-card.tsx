@@ -13,6 +13,8 @@ import {
 import { CondoInfoFieldKey } from "../condominium-info";
 import * as forms from "../condominium-info-forms/forms";
 import { cn } from "@/lib/utils";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Add01FreeIcons, Edit01FreeIcons } from "@hugeicons/core-free-icons";
 
 type ItemCardProps = {
   fieldKey: CondoInfoFieldKey;
@@ -53,10 +55,12 @@ export default function ItemCard({
           <Button variant="ghost" className="text-primary" size="sm">
             {added ? (
               <Button size="icon" variant="ghost">
+                <HugeiconsIcon icon={Edit01FreeIcons} />
                 Edit
               </Button>
             ) : (
               <Button size="icon" variant="ghost">
+                <HugeiconsIcon icon={Add01FreeIcons} />
                 Add
               </Button>
             )}
