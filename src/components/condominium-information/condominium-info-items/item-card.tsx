@@ -71,11 +71,6 @@ export default function ItemCard({
               <DialogTitle>
                 {added ? `Edit ${label}` : `Add ${label}`}
               </DialogTitle>
-              <DialogDescription>
-                {added
-                  ? "Update your information below."
-                  : "Please fill out the form to add this item."}
-              </DialogDescription>
             </DialogHeader>
 
             <FormComponent

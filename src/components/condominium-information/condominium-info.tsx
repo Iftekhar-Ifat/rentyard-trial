@@ -72,7 +72,6 @@ export default function CondominiumInfo() {
           <InfoItems fields={fields} onAdd={markAdded} />
         </div>
       </MaxWidthWrapper>
-
       <CondominiumInfoFooter />
     </div>
   );
