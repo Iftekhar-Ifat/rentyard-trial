@@ -56,8 +56,8 @@ export default function ProofOfOwnership() {
         className="flex flex-col flex-grow justify-between"
       >
         <div className="flex-1 overflow-auto space-y-4 pt-6">
-          <Card className="w-full py-2 gap-0.5">
-            <CardHeader className="bg-muted/50 h-10 border-b px-4 py-2">
+          <Card className="w-full  py-0 gap-0.5">
+            <CardHeader className="h-10 bg-muted/50 border-b px-4 py-4">
               <CardTitle className="text-muted-foreground font-medium">
                 Proof of ownership
               </CardTitle>
@@ -134,7 +134,7 @@ export default function ProofOfOwnership() {
             <Link href="/" className="underline">
               Back
             </Link>
-            <Button>Get Started</Button>
+            <Button type="submit">Get Started</Button>
           </div>
         </div>
       </form>

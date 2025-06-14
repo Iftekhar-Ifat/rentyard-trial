@@ -22,7 +22,7 @@ export default function AddProperty() {
         )}
       </div>
       <RoleBasedFormWrapper propertyType={propertyType} roleType={roleType} />
-      {propertyType && roleType ? null : <AddPropertySubmit />}
+      <AddPropertySubmit isVisible={!!roleType} />
     </div>
   );
 }
