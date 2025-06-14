@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Upload02Icon } from "@hugeicons/core-free-icons";
@@ -30,6 +29,7 @@ import {
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { propertyManagementSchema } from "@/validation/role-based-form.schema";
+import { PhoneInput } from "@/components/ui/phone-input";
 
 type PropertyManagementFormData = z.infer<typeof propertyManagementSchema>;
 
@@ -87,7 +87,7 @@ export default function PropertyManagementForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col flex-grow justify-between mx-auto"
+        className="flex flex-col flex-grow justify-between"
       >
         <div className="flex-1 space-y-6">
           <Card className="w-full py-0 gap-0.5">
@@ -282,17 +282,10 @@ export default function PropertyManagementForm() {
                         Phone number*
                       </FormLabel>
                       <FormControl>
-                        <div className="flex">
-                          <div className="flex items-center px-3 bg-muted border border-r-0 rounded-l-md">
-                            <span className="w-4 h-3 rounded-sm mr-2"></span>
-                            <span className="text-sm">+880</span>
-                          </div>
-                          <Input
-                            placeholder="+880"
-                            {...field}
-                            className="rounded-l-none border-l-0"
-                          />
-                        </div>
+                        <PhoneInput
+                          placeholder="Enter a phone number"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>

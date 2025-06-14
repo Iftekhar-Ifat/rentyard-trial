@@ -1,3 +1,4 @@
+import { isValidPhoneNumber } from "react-phone-number-input";
 import { z } from "zod";
 
 export const proofOfOwnershipSchema = z.object({
@@ -49,7 +50,11 @@ export const propertyManagementSchema = z.object({
   countryRegion: z.string().min(1, "Country/Region is required"),
   streetAddress: z.string().min(1, "Street address is required").trim(),
   aptSuitUnit: z.string().optional(),
-  phoneNumber: z.string().min(1, "Phone number is required").trim(),
+
+  phoneNumber: z
+    .string()
+    .refine(isValidPhoneNumber, { message: "Invalid phone number" }),
+
   contactEmail: z
     .string()
     .min(1, "Contact email is required")
