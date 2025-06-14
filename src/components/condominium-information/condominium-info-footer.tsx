@@ -3,7 +3,7 @@ import MaxWidthWrapper from "../shared/max-width-wrapper";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
-export default function CondominiumInformationFooter() {
+export default function CondominiumInfoFooter() {
   return (
     <div className="w-full flex-grow content-end">
       <MaxWidthWrapper>
