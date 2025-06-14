@@ -118,6 +118,7 @@ export default function InfoItems({ fields, onAdd }: ItemsProps) {
             fieldKey={m.key}
             label={m.label}
             note={m.note}
+            data={fields[m.key].data}
             added={fields[m.key].added}
             formComponentName={m.form}
             onAdd={onAdd}
@@ -133,6 +134,7 @@ export default function InfoItems({ fields, onAdd }: ItemsProps) {
             fieldKey={m.key}
             label={m.label}
             note={m.note}
+            data={fields[m.key].data}
             added={fields[m.key].added}
             formComponentName={m.form}
             onAdd={onAdd}
