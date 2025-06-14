@@ -2,7 +2,11 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import MaxWidthWrapper from "../shared/max-width-wrapper";
 
-export default function CondominiumInfoFooter() {
+type FooterProps = {
+  onNext: () => void;
+};
+
+export default function CondominiumInfoFooter({ onNext }: FooterProps) {
   return (
     <div className="w-full flex-grow content-end">
       <div className="flex w-full">
@@ -15,7 +19,7 @@ export default function CondominiumInfoFooter() {
           <Link href="/" className="underline">
             Back
           </Link>
-          <Button>Next</Button>
+          <Button onClick={onNext}>Next</Button>
         </div>
       </MaxWidthWrapper>
     </div>

@@ -23,6 +23,7 @@ type ItemCardProps = {
   note: string;
   added: boolean;
   data?: unknown;
+  error?: boolean;
   formComponentName: keyof typeof forms;
   onAdd: (key: CondoInfoFieldKey, data: unknown) => void;
 };
@@ -33,6 +34,7 @@ export default function ItemCard({
   note,
   added,
   data,
+  error,
   formComponentName,
   onAdd,
 }: ItemCardProps) {
@@ -41,7 +43,12 @@ export default function ItemCard({
 
   return (
     <div>
-      <div className="bg-card text-card-foreground flex gap-6 rounded-xl border shadow-sm items-center justify-between px-4 py-3">
+      <div
+        className={cn(
+          "bg-card text-card-foreground flex items-center justify-between p-4 rounded-xl border",
+          { "border-red-500": error && !added }
+        )}
+      >
         <div>
           <span className={added ? "font-semibold" : ""}>{label}</span>
           <span

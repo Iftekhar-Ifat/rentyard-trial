@@ -3,10 +3,12 @@
 import { CondoInfoFieldKey, CondoInfoFieldState } from "../condominium-info";
 import ItemCard from "./item-card";
 import * as forms from "../condominium-info-forms/forms";
+import { error } from "console";
 
 export type ItemsProps = {
   fields: Record<CondoInfoFieldKey, CondoInfoFieldState>;
   onAdd: (key: CondoInfoFieldKey, data: unknown) => void;
+  errors: CondoInfoFieldKey[];
 };
 
 const ITEM_DATA: {
@@ -28,7 +30,7 @@ const ITEM_DATA: {
       key: "propertyAddress",
       label: "Property address",
       note: "(Required)",
-      form: "PropertyAddressForm" as const,
+      form: "PropertyAddressForm",
     },
     {
       key: "leasingInfo",
@@ -107,7 +109,7 @@ const ITEM_DATA: {
   ],
 };
 
-export default function InfoItems({ fields, onAdd }: ItemsProps) {
+export default function InfoItems({ fields, onAdd, errors }: ItemsProps) {
   return (
     <div className="my-6 grid grid-cols-1 md:grid-cols-2 gap-4">
       {/* LEFT */}
@@ -121,6 +123,7 @@ export default function InfoItems({ fields, onAdd }: ItemsProps) {
             data={fields[m.key].data}
             added={fields[m.key].added}
             formComponentName={m.form}
+            error={errors.includes(m.key)}
             onAdd={onAdd}
           />
         ))}
@@ -137,6 +140,7 @@ export default function InfoItems({ fields, onAdd }: ItemsProps) {
             data={fields[m.key].data}
             added={fields[m.key].added}
             formComponentName={m.form}
+            error={errors.includes(m.key)}
             onAdd={onAdd}
           />
         ))}
