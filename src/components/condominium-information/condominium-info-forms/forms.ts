@@ -9,3 +9,4 @@ export { default as PetFeesForm } from "./pet-fees-form";
 export { default as ParkingForm } from "./pet-fees-form";
 export { default as NearestEducationalForm } from "./nearest-educational-form";
 export { default as NearestStationsForm } from "./nearest-stations-form";
+export { default as NearestLandmarkForm } from "./nearest-landmark-form";

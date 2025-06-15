@@ -110,3 +110,10 @@ export const stationSchema = z.object({
   distanceUnit: z.enum(["Mile", "Km"], { required_error: "Unit is required" }),
   stationName: z.string().min(1, "Station name is required"),
 });
+
+export const landmarkSchema = z.object({
+  landmarkType: z.string().min(1, "Landmark type is required"),
+  distance: z.string().min(1, "Distance is required"),
+  distanceUnit: z.string().min(1, "Distance unit is required"),
+  landmarkName: z.string().min(1, "Landmark name is required"),
+});
