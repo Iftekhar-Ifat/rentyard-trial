@@ -74,3 +74,13 @@ export const petFeesSchema = z.object({
   petSecurityDeposit: z.string().min(1, "Pet security deposit is required"),
   monthlyPetRent: z.string().min(1, "Monthly pet rent is required"),
 });
+
+export const parkingSchema = z.object({
+  parkingTime: z.enum(["1H", "2H", "3H", "4H", "6H", "12H", "24H"], {
+    required_error: "Parking time is required",
+  }),
+  parkingOverview: z
+    .string()
+    .max(200, "Maximum 200 characters allowed")
+    .optional(),
+});
