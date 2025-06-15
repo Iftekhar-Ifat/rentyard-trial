@@ -26,3 +26,18 @@ export const leasingInfoSchema = z.object({
   stateTerritory: z.string().min(1, "Please select a state/territory"),
   zipCode: z.string().min(5, "Zip code must be at least 5 characters"),
 });
+
+export const chargesSchema = z.object({
+  applicationFee: z.string().min(1, "Application fee is required"),
+  adminFee: z.string().min(1, "Admin fee is required"),
+});
+
+export const rentFrequencySchema = z.object({
+  rentPaymentFrequency: z.string().min(1, "Rent payment frequency is required"),
+  rentReminderDate: z.date({
+    required_error: "Rent reminder date is required",
+  }),
+  rentDueDate: z.date({
+    required_error: "Rent due date is required",
+  }),
+});
