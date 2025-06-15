@@ -84,3 +84,20 @@ export const parkingSchema = z.object({
     .max(200, "Maximum 200 characters allowed")
     .optional(),
 });
+
+export const educationSchema = z.object({
+  institutionType: z.enum(
+    [
+      "Preschool",
+      "Elementary",
+      "Middle school",
+      "High school",
+      "College",
+      "University",
+    ],
+    { required_error: "Institution type is required" }
+  ),
+  distance: z.string().min(1, "Distance is required"),
+  distanceUnit: z.enum(["Mile", "Km"], { required_error: "Unit is required" }),
+  institutionName: z.string().min(1, "Institution name is required"),
+});

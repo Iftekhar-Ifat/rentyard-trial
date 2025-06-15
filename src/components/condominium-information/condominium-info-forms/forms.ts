@@ -7,3 +7,4 @@ export { default as AboutPropertyForm } from "./about-property-form";
 export { default as CommunityAmenitiesForm } from "./community-amenities-form";
 export { default as PetFeesForm } from "./pet-fees-form";
 export { default as ParkingForm } from "./pet-fees-form";
+export { default as NearestEducationalForm } from "./nearest-educational-form";
