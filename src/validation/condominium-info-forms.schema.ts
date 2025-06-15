@@ -117,3 +117,8 @@ export const landmarkSchema = z.object({
   distanceUnit: z.string().min(1, "Distance unit is required"),
   landmarkName: z.string().min(1, "Landmark name is required"),
 });
+
+export const utilityProviderSchema = z.object({
+  utilityType: z.string().min(1, "Utility type is required"),
+  providerCompanyName: z.string().min(1, "Provider company name is required"),
+});
