@@ -66,3 +66,11 @@ export const aboutPropertySchema = z.object({
     .max(500, "Description must not exceed 500 characters")
     .optional(),
 });
+
+export const petFeesSchema = z.object({
+  petType: z.string().min(1, "Pet type is required"),
+  maxWeight: z.string().min(1, "Max weight is required"),
+  oneTimePetFee: z.string().min(1, "One time pet fee is required"),
+  petSecurityDeposit: z.string().min(1, "Pet security deposit is required"),
+  monthlyPetRent: z.string().min(1, "Monthly pet rent is required"),
+});

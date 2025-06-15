@@ -5,3 +5,4 @@ export { default as RentFrequencyForm } from "./rant-frequency-form";
 export { default as ApplicationAgreementForm } from "./application-agreement-form";
 export { default as AboutPropertyForm } from "./about-property-form";
 export { default as CommunityAmenitiesForm } from "./community-amenities-form";
+export { default as PetFeesForm } from "./pet-fees-form";
