@@ -41,3 +41,21 @@ export const rentFrequencySchema = z.object({
     required_error: "Rent due date is required",
   }),
 });
+
+export const agreementSchema = z
+  .object({
+    agreementFile: z
+      .custom<FileList>()
+      .optional()
+      .refine(
+        (files) =>
+          !files || files.length === 0 || files[0]?.type === "application/pdf",
+        {
+          message: "Only PDF files are allowed",
+        }
+      ),
+    acceptApplications: z.boolean(),
+  })
+  .required({
+    acceptApplications: true,
+  });
