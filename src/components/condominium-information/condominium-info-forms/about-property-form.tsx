@@ -12,13 +12,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
-const aboutPropertySchema = z.object({
-  description: z
-    .string()
-    .max(500, "Description must not exceed 500 characters")
-    .optional(),
-});
+import { aboutPropertySchema } from "@/validation/condominium-info-forms.schema";
 
 type AboutPropertyFormData = z.infer<typeof aboutPropertySchema>;
 
