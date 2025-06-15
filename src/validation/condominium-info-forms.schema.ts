@@ -101,3 +101,12 @@ export const educationSchema = z.object({
   distanceUnit: z.enum(["Mile", "Km"], { required_error: "Unit is required" }),
   institutionName: z.string().min(1, "Institution name is required"),
 });
+
+export const stationSchema = z.object({
+  stationType: z.enum(["Bus", "Train", "Metro", "Subway", "Tram", "Other"], {
+    required_error: "Station type is required",
+  }),
+  distance: z.string().min(1, "Distance is required"),
+  distanceUnit: z.enum(["Mile", "Km"], { required_error: "Unit is required" }),
+  stationName: z.string().min(1, "Station name is required"),
+});
