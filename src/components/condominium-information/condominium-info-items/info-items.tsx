@@ -3,7 +3,6 @@
 import { CondoInfoFieldKey, CondoInfoFieldState } from "../condominium-info";
 import ItemCard from "./item-card";
 import * as forms from "../condominium-info-forms/forms";
-import { error } from "console";
 
 export type ItemsProps = {
   fields: Record<CondoInfoFieldKey, CondoInfoFieldState>;

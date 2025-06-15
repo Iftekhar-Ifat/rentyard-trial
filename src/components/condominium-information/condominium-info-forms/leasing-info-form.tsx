@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -39,7 +38,7 @@ const leasingInfoSchema = z.object({
   zipCode: z.string().min(5, "Zip code must be at least 5 characters"),
 });
 
-type LeasingInfoForm = z.infer<typeof leasingInfoSchema>;
+type LeasingInfoFormData = z.infer<typeof leasingInfoSchema>;
 
 const states = [
   "Alabama",
@@ -53,41 +52,35 @@ const states = [
   "Florida",
 ];
 
-export default function LeasingInfoForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState("");
+type LeasingInfoFormProps = {
+  initialData?: Partial<LeasingInfoFormData>;
+  onSubmit: (data: LeasingInfoFormData) => void;
+};
 
-  const form = useForm<LeasingInfoForm>({
+export default function LeasingInfoForm({
+  initialData,
+  onSubmit,
+}: LeasingInfoFormProps) {
+  const form = useForm<LeasingInfoFormData>({
     resolver: zodResolver(leasingInfoSchema),
     defaultValues: {
-      managerName: "",
-      phoneNumber: "",
-      email: "",
-      sameAsProperty: false,
-      streetAddress: "",
-      aptSuitUnit: "",
-      cityTown: "",
-      stateTerritory: "",
-      zipCode: "",
+      managerName: initialData?.managerName ?? "",
+      phoneNumber: initialData?.phoneNumber ?? "",
+      email: initialData?.email ?? "",
+      sameAsProperty: initialData?.sameAsProperty ?? false,
+      streetAddress: initialData?.streetAddress ?? "",
+      aptSuitUnit: initialData?.aptSuitUnit ?? "",
+      cityTown: initialData?.cityTown ?? "",
+      stateTerritory: initialData?.stateTerritory ?? "",
+      zipCode: initialData?.zipCode ?? "",
     },
   });
 
   const watchSameAsProperty = form.watch("sameAsProperty");
 
-  const onSubmit = async (data: LeasingInfoForm) => {
-    setIsSubmitting(true);
-    setSubmitMessage("");
-    try {
-      console.log("Form submitted:", data);
-      // Simulate API call
-      setSubmitMessage("Form submitted successfully!");
-      form.reset();
-    } catch (error) {
-      console.log(error);
-      setSubmitMessage("Submission failed. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    form.handleSubmit(onSubmit)();
   };
 
   return (
@@ -271,24 +264,8 @@ export default function LeasingInfoForm() {
           </>
         )}
 
-        {/* Submission Feedback */}
-        {submitMessage && (
-          <div
-            className={`text-sm ${
-              submitMessage.includes("success")
-                ? "text-green-600"
-                : "text-red-600"
-            }`}
-          >
-            {submitMessage}
-          </div>
-        )}
-
-        {/* Submit Button */}
         <div className="flex justify-end pt-4">
-          <Button type="submit" className="px-8" disabled={isSubmitting}>
-            {isSubmitting ? "Submitting..." : "Add"}
-          </Button>
+          <Button onClick={handleSubmit}>Add</Button>
         </div>
       </form>
     </Form>

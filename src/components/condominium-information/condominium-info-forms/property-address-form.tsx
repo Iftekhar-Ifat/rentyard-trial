@@ -40,26 +40,29 @@ const states = [
   { value: "il", label: "Illinois" },
 ];
 
-export default function PropertyAddressForm() {
+type PropertyAddressFormProps = {
+  initialData?: Partial<PropertyAddressFormData>;
+  onSubmit: (data: PropertyAddressFormData) => void;
+};
+
+export default function PropertyAddressForm({
+  initialData,
+  onSubmit,
+}: PropertyAddressFormProps) {
   const form = useForm<PropertyAddressFormData>({
     resolver: zodResolver(propertyAddressSchema),
     defaultValues: {
-      propertyName: "",
-      totalApartmentUnit: "",
-      propertyWebsite: "",
-      countryRegion: "",
-      streetAddress: "",
-      aptSuiteUnit: "",
-      cityTown: "",
-      stateTerritory: "",
-      zipCode: "",
+      propertyName: initialData?.propertyName ?? "",
+      totalApartmentUnit: initialData?.totalApartmentUnit ?? "",
+      propertyWebsite: initialData?.propertyWebsite ?? "",
+      countryRegion: initialData?.countryRegion ?? "",
+      streetAddress: initialData?.streetAddress ?? "",
+      aptSuiteUnit: initialData?.aptSuiteUnit ?? "",
+      cityTown: initialData?.cityTown ?? "",
+      stateTerritory: initialData?.stateTerritory ?? "",
+      zipCode: initialData?.zipCode ?? "",
     },
   });
-
-  const onSubmit = (data: PropertyAddressFormData) => {
-    console.log("Form submitted:", data);
-    alert("Form submitted successfully!");
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

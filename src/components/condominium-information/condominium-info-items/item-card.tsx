@@ -1,4 +1,3 @@
-// components/CondominiumInfo/ItemCard.tsx
 "use client";
 
 import { useState } from "react";
@@ -9,7 +8,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogDescription,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { HugeiconsIcon } from "@hugeicons/react";

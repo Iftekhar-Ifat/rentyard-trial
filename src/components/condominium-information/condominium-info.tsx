@@ -61,7 +61,7 @@ const INITIAL_FIELDS_STATE: Record<CondoInfoFieldKey, CondoInfoFieldState> =
       key,
       { added: false, required },
     ])
-  );
+  ) as Record<CondoInfoFieldKey, CondoInfoFieldState>;
 
 export default function CondominiumInfo() {
   const [fields, setFields] = useState(INITIAL_FIELDS_STATE);
